@@ -2021,9 +2021,9 @@
     "restore": {
       "projectUniqueName": "Procesotransaccional",
       "projectName": "Procesotransaccional",
-      "projectPath": "D:\\RPA\\Procesotransaccional\\.local",
+      "projectPath": "D:\\Documents\\GitHub\\rpaUipath\\Procesotransaccional\\.local",
       "packagesPath": "C:\\Users\\sku\\.nuget\\packages\\",
-      "outputPath": "D:\\RPA\\Procesotransaccional\\.local"
+      "outputPath": "D:\\Documents\\GitHub\\rpaUipath\\Procesotransaccional\\.local"
     },
     "frameworks": {
       "net461": {

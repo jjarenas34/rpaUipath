@@ -206,13 +206,13 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Captura el excel en DT" sap:VirtualizedContainerService.HintSize="1599,2043" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="adjuntos\Maestro_Productos.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Captura el excel en DT" sap:VirtualizedContainerService.HintSize="947,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="adjuntos\Maestro_Productos.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="1565,1934" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="1565,1820" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="datosRegistro" />
               <Variable x:TypeArguments="x:Int32" Name="contador" />
@@ -445,11 +445,17 @@
                 <InArgument x:TypeArguments="x:String">[fila(columnaSKU).ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ValidarExistenciaProducto workflow" sap:VirtualizedContainerService.HintSize="569,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SAP_ValidarExistenciaProducto.xaml">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ValidarExistenciaSKU workflow" sap:VirtualizedContainerService.HintSize="569,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SAP_ValidarExistenciaSKU.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="codProdArg">[codigoSKU]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="paisArg">[paisSelecionado]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="salidaArg">[resultado]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="codProdArg">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codigoSKU" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="paisArg">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="paisSelecionado" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="salidaArg">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resultado" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <If Condition="[resultado.Equals(&quot;1&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_1">
@@ -964,18 +970,34 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReglasRegistro workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ReglasRegistro.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="cumple">True</InArgument>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="existeProductoenSAP">True</InArgument>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="existeSKUenSAP">[not(validarCodigo)]</InArgument>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="tieneCamposCompletos">[validarCampos]</InArgument>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="tienePrecioProveedorCorrecto">[validarPrecioProveedor]</InArgument>
-                    <InArgument x:TypeArguments="x:Boolean" x:Key="tienePrecioVentaCorrecto">[validarPrecioVenta]</InArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="salidaArg">[respuestaReglas]</OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="mensajeArg">[mensajeReglas]</OutArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="cumple">
+                      <Literal x:TypeArguments="x:Boolean" Value="True" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="existeProductoenSAP">
+                      <Literal x:TypeArguments="x:Boolean" Value="True" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="existeSKUenSAP">
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="validarCodigo" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="tieneCamposCompletos">
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="validarCampos" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="tienePrecioProveedorCorrecto">
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="validarPrecioProveedor" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="tienePrecioVentaCorrecto">
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="validarPrecioVenta" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="salidaArg">
+                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="respuestaReglas" />
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="mensajeArg">
+                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeReglas" />
+                    </OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
                 <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;La repuesta de reglas fue: &quot; +respuestaReglas]" />
-                <If Condition="[respuestaReglas.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_8">
+                <If Condition="[respuestaReglas.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="653,400" sap2010:WorkflowViewState.IdRef="If_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1002,7 +1024,7 @@
                           <OutArgument x:TypeArguments="x:String">[jsonRegistroArg]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[jsonRegistro]</InArgument>
+                          <InArgument x:TypeArguments="x:String">[jsonRegistro.Substring(1).Substring(0,jsonRegistro.Length-2)]</InArgument>
                         </Assign.Value>
                       </Assign>
                     </Sequence>
