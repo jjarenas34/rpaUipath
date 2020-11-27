@@ -1,14 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ValidarExistenciaProducto" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ca="clr-namespace:CommandPrompt.Activities;assembly=WindowsCommandPromptActivities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="codProdArg" Type="InArgument(x:String)" />
     <x:Property Name="paisArg" Type="InArgument(x:String)" />
     <x:Property Name="salidaArg" Type="OutArgument(x:String)" />
-    <x:Property Name="codProveedorArg" Type="InArgument(x:String)" />
-    <x:Property Name="jObject" Type="OutArgument(njl:JObject)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1312,2560</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1308,2273</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidarExistenciaProducto_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -73,14 +72,14 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidarExistenciaProducto" sap:VirtualizedContainerService.HintSize="1322,2395" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidarExistenciaProducto" sap:VirtualizedContainerService.HintSize="1318,2068" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="valorSalida" />
       <Variable x:TypeArguments="x:String" Name="comando" />
       <Variable x:TypeArguments="x:String" Name="salidaCMD" />
       <Variable x:TypeArguments="njl:JObject" Name="objetoJson" />
       <Variable x:TypeArguments="x:String" Name="pais" />
-      <Variable x:TypeArguments="x:String" Name="codigoProveedor" />
+      <Variable x:TypeArguments="x:String" Name="codigoProd" />
       <Variable x:TypeArguments="x:Int32" Name="codSalidaToken" />
       <Variable x:TypeArguments="x:String" Name="salidaFinal" />
     </Sequence.Variables>
@@ -89,7 +88,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="1280,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="1276,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[salidaFinal]</OutArgument>
       </Assign.To>
@@ -97,7 +96,7 @@
         <InArgument x:TypeArguments="x:String">-1</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="1280,287" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="1276,287" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
         <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://217.71.88.19:7012/api/Login/echoping" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[valorSalida]" TimeoutMS="6000">
           <ui:HttpClient.Attachments>
@@ -143,7 +142,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <If Condition="[valorSalida.Equals(&quot;true&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="1280,1776" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[valorSalida.Equals(&quot;true&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="1276,1449" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,13 +150,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="901,1628" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="897,1301" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" Body="{}{&#xA;  'UserName':'admin',&#xA;  'Password':'llpcli'&#xA;}" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://217.71.88.19:7012/api/Login/Authenticate" sap:VirtualizedContainerService.HintSize="859,22" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[valorSalida]" StatusCode="[codSalidaToken]" TimeoutMS="6000">
+          <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" Body="{}{&#xA;  'UserName':'admin',&#xA;  'Password':'llpcli'&#xA;}" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://217.71.88.19:7012/api/Login/Authenticate" sap:VirtualizedContainerService.HintSize="855,22" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[valorSalida]" StatusCode="[codSalidaToken]" TimeoutMS="6000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>
@@ -174,15 +173,15 @@
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.UrlSegments>
           </ui:HttpClient>
-          <If Condition="[codSalidaToken=200]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="859,1474" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[codSalidaToken=200]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="855,1147" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
-              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="480,1326" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="476,999" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[pais]</OutArgument>
                   </Assign.To>
@@ -190,27 +189,27 @@
                     <InArgument x:TypeArguments="x:String">[paisArg]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[codigoProveedor]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String">[codigoProd]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">["'"+codProveedorArg+"'"]</InArgument>
+                    <InArgument x:TypeArguments="x:String">["'"+codProdArg+"'"]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[comando]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["curl --location --request GET ""http://217.71.88.19:7012/api/producto/consultar/proveedor"" --header ""Authorization: Bearer "+ valorSalida.Substring(1) +"  --header ""Content-Type: application/json"" --data-raw ""{  'keyorganizacion': "+pais+",  'codProveedor': "+codigoProveedor+"}"""]</InArgument>
+                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["curl --location --request GET ""http://217.71.88.19:7012/api/producto/consultar/sku"" --header ""Authorization: Bearer "+ valorSalida.Substring(1) +"  --header ""Content-Type: application/json"" --data-raw ""{  'keyorganizacion': "+pais+",  'codProducto': "+codigoProd+"}"""]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[comando]" />
-                <ca:ExecuteSingleCommand Command="[comando]" CommandOutput="[salidaCMD]" DisplayName="Execute single command" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="ExecuteSingleCommand_1" SingleLineOutput="True" />
-                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[salidaCMD]" />
-                <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserializar JSON" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[objetoJson]" JsonString="[salidaCMD]" />
-                <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="438,510" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[comando]" />
+                <ca:ExecuteSingleCommand Command="[comando]" CommandOutput="[salidaCMD]" DisplayName="Execute single command" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="ExecuteSingleCommand_1" SingleLineOutput="True" />
+                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[salidaCMD]" />
+                <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserializar JSON" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[objetoJson]" JsonString="[salidaCMD]" />
+                <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                   <TryCatch.Try>
                     <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
@@ -230,7 +229,7 @@
                     </Sequence>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -258,7 +257,7 @@
         <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;El servicio para validar codigo SKU no esta disponible&quot;]" />
       </If.Else>
     </If>
-    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="1280,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="1276,60" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[salidaArg]</OutArgument>
       </Assign.To>

@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>829,1604</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1039,1744</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RegistroLog_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RegistroLog" sap:VirtualizedContainerService.HintSize="839,1439" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RegistroLog" sap:VirtualizedContainerService.HintSize="839,1539" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="salidaEcho" />
     </Sequence.Variables>
@@ -153,9 +153,9 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <If Condition="[salidaEcho.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="797,766" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[salidaEcho.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="797,866" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,618" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,718" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="jsonEnvio" />
             <Variable x:TypeArguments="x:String" Name="salidaLogJson" />
@@ -169,14 +169,32 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim obj As DataTable = New DataTable&#xA;obj.Columns.Add(&quot;accion&quot;)&#xA;obj.Columns.Add(&quot;fechaRegistro&quot;)&#xA;obj.Columns.Add(&quot;nombreUsuario&quot;)&#xA;obj.Columns.Add(&quot;numeroSKU&quot;)&#xA;obj.Rows.Add(accion, fechaRegistro, nombreUsuario, numeroSKU)&#xA;Out = JsonConvert.SerializeObject(obj)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
             <ui:InvokeCode.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="accion">[accion]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="fechaRegistro">[fechaRegistro]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="nombreUsuario">[nombreUsuario]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="numeroSKU">[numeroSKU]</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out">[jsonEnvio]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="accion">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="accion" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="fechaRegistro">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fechaRegistro" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="nombreUsuario">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="nombreUsuario" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="numeroSKU">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="numeroSKU" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="jsonEnvio" />
+              </OutArgument>
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
-          <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" Body="[jsonEnvio]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://10.0.1.94:8080//rpaAPI/services/auditoria/registrarAuditoria" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[salidaLogJson]" TimeoutMS="6000">
+          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[jsonEnvio]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[jsonEnvio.Substring(1).Substring(0,jsonEnvio.Length-2)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" Body="[jsonEnvio]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://10.0.1.94:8080/rpaAPI/services/auditoria/registrarAuditoria" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[salidaLogJson]" TimeoutMS="6000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>

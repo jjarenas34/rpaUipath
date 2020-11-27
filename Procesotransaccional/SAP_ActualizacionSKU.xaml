@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="1364,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;entro a Registro SKU&quot;]" />
+    <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="1364,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;entro a Actualizar SKU&quot;]" />
     <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="1364,287" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
         <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="http://217.71.88.19:7012/api/Login/echoping" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[valorSalida]" TimeoutMS="6000">
@@ -195,7 +195,7 @@
                     <InArgument x:TypeArguments="x:String">["Bearer "+valorSalida]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" Body="[json]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="[&quot;http://217.71.88.19:7012/api/producto/registrar/&quot;+codVerifArg]" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" Result="[salidaCMD]" StatusCode="[codigo]" TimeoutMS="6000">
+                <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" Body="[json]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Solicitud HTTP" EndPoint="[&quot;http://217.71.88.19:7012/api/producto/actualizar/&quot;+codVerifArg]" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" Result="[salidaCMD]" StatusCode="[codigo]" TimeoutMS="6000">
                   <ui:HttpClient.Attachments>
                     <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                   </ui:HttpClient.Attachments>
@@ -212,7 +212,7 @@
                     <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                   </ui:HttpClient.UrlSegments>
                 </ui:HttpClient>
-                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;el codigo salida de registro SKU es: &quot;+codigo.ToString]" />
+                <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;el codigo salida de Actualizar SKU es: &quot;+codigo.ToString]" />
                 <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[salidaCMD]" />
                 <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserializar JSON" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[objetoJson]" JsonString="[salidaCMD]" />
                 <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="438,710" sap2010:WorkflowViewState.IdRef="TryCatch_1">
