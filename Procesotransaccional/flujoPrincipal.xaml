@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1442,1237</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240,1197</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>flujoEcuador_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -119,7 +119,7 @@
           <av:Size x:Key="ShapeSize">200,123</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Si es 1 es registro, si es 2 es actualización y si es -1 hubo un error en la lectura y no hace nada." DisplayName="Cambiar" Expression="[transaccion]" sap:VirtualizedContainerService.HintSize="1630,1695" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Si es 1 es registro, si es 2 es actualización y si es -1 hubo un error en la lectura y no hace nada." DisplayName="Cambiar" Expression="[transaccion]" sap:VirtualizedContainerService.HintSize="811,713" sap2010:WorkflowViewState.IdRef="Switch`1_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -201,6 +201,10 @@
                     <Variable x:TypeArguments="x:String" Name="precioCompra" />
                     <Variable x:TypeArguments="x:String" Name="precioVenta" />
                     <Variable x:TypeArguments="x:String" Name="sku" />
+                    <Variable x:TypeArguments="x:String" Name="numeroListaCompra" />
+                    <Variable x:TypeArguments="x:String" Name="lineaListaCompra" />
+                    <Variable x:TypeArguments="x:String" Name="numeroListaVenta" />
+                    <Variable x:TypeArguments="x:String" Name="lineaListaVenta" />
                   </Flowchart.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -293,15 +297,37 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP_ActPrecioSKU compra" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">compra</InArgument>
-                                        <InArgument x:TypeArguments="x:Double" x:Key="precio">[CDbl(precioCompra)]</InArgument>
-                                        <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">[CInt(paisSeleccionado)]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="sku">[sku]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="moneda">[tipoCompra]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">
+                                          <Literal x:TypeArguments="x:String">compra</Literal>
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:Double" x:Key="precio">
+                                          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(precioCompra)" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">
+                                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(paisSeleccionado)" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="sku">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sku" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="moneda">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="tipoCompra" />
+                                        </InArgument>
                                         <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
-                                        <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">[resultado]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="messageArg">[mensajeSalida]</OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">[codVerif]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resultado" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="messageArg">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeSalida" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="lineaLista">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lineaListaCompra" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="numeroLista">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="numeroListaCompra" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -329,17 +355,39 @@
                                                 <av:PointCollection x:Key="ConnectorLocation">370,1150.5 560,1150.5 560,1186.5</av:PointCollection>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
+                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">venta</InArgument>
-                                                <InArgument x:TypeArguments="x:Double" x:Key="precio">[CDbl(precioVenta)]</InArgument>
-                                                <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">[CInt(paisSeleccionado)]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="sku">[sku]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="moneda">[tipoVenta]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">
+                                                  <Literal x:TypeArguments="x:String">venta</Literal>
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:Double" x:Key="precio">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(precioVenta)" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(paisSeleccionado)" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="sku">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sku" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="moneda">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="tipoVenta" />
+                                                </InArgument>
                                                 <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
-                                                <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">[resultado]</OutArgument>
-                                                <OutArgument x:TypeArguments="x:String" x:Key="messageArg">[mensajeSalida]</OutArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">[codVerif]</InArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">
+                                                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resultado" />
+                                                </OutArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="messageArg">
+                                                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeSalida" />
+                                                </OutArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="lineaLista">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lineaListaVenta" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="numeroLista">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="numeroListaCompra" />
+                                                </InArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -530,17 +578,51 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Si la accion devuelta es 1 es que esta listo para registrar en SAP. Si la acción es -1 es una problema que debe solucionar, -2 si se debe enviar a operaciones para que revise precio de compra" DisplayName="Invoke ValidacionRegistro workflow" sap:VirtualizedContainerService.HintSize="200,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="ValidacionRegistro.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Boolean" x:Key="operacionesArg">[operaciones]</InArgument>
-                        <OutArgument x:TypeArguments="x:Int32" x:Key="accionSalidaArg">[accion]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="MensajeSalidaArg">[mensajeSalida]</OutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="paisArg">[paisSeleccionado]</InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="jsonRegistroArg">[jsonRegistro]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="skuArg">[sku]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="precioCompraArg">[precioCompra]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="precioVentaArg">[precioVenta]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="tipoMonedaCompraArg">[tipoCompra]</OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="tipoMonedaVentaArg">[tipoVenta]</OutArgument>
-                        <InArgument x:TypeArguments="sd:DataRow" x:Key="filaArg">[fila]</InArgument>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="operacionesArg">
+                          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="operaciones" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:Int32" x:Key="accionSalidaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="accion" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="MensajeSalidaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeSalida" />
+                        </OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="paisArg">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="paisSeleccionado" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="jsonRegistroArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="jsonRegistro" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="skuArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="sku" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="precioCompraArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="precioCompra" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="precioVentaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="precioVenta" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="tipoMonedaCompraArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="tipoCompra" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="tipoMonedaVentaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="tipoVenta" />
+                        </OutArgument>
+                        <InArgument x:TypeArguments="sd:DataRow" x:Key="filaArg">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="fila" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="numListaCompraArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="numeroListaCompra" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="numListaVentaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="numeroListaVenta" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="lineaListaCompraArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="lineaListaCompra" />
+                        </OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="lineaListaVentaArg">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="lineaListaVenta" />
+                        </OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -595,7 +677,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ValidarRegistrado para registro" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="SAP_ValidarRegistrado.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ValidarRegistro para registro" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="SAP_ValidarRegistrado.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
                     <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg" />
@@ -604,7 +686,7 @@
                     <InArgument x:TypeArguments="x:Int32" x:Key="tipoArg">1</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ValidarRegistrado workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="SAP_ValidarRegistrado.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ValidarRegistro Precio" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="SAP_ValidarRegistrado.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
                     <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg" />
@@ -627,7 +709,7 @@
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
-        <Sequence x:Key="2" DisplayName="Actualizacion Precio de SKU" sap:VirtualizedContainerService.HintSize="1590,1436" sap2010:WorkflowViewState.IdRef="Sequence_36">
+        <Sequence x:Key="2" DisplayName="Actualizacion Precio de SKU" sap:VirtualizedContainerService.HintSize="771,454" sap2010:WorkflowViewState.IdRef="Sequence_36">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Double" Name="precioCompraNuevo" />
             <Variable x:TypeArguments="x:Double" Name="PrecioVentaNueva" />
@@ -643,16 +725,16 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[proveedor.Equals(&quot;INGERSOLL&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="1548,1344" sap2010:WorkflowViewState.IdRef="If_13">
+          <If Condition="[proveedor.Equals(&quot;INGERSOLL&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="729,362" sap2010:WorkflowViewState.IdRef="If_13">
             <If.Then>
-              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="1019,1196" sap2010:WorkflowViewState.IdRef="Sequence_38">
+              <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_38">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="codProveedor" />
                   <Variable x:TypeArguments="njl:JObject[]" Name="productoJson" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -695,21 +777,11 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ScrappingWebPrecioIngersoll workflow" sap:VirtualizedContainerService.HintSize="514,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_48" UnSafe="False" WorkflowFileName="ScrappingWebPrecioIngersoll.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="njl:JObject[]" x:Key="productoJson">
-                            <mva:VisualBasicValue x:TypeArguments="njl:JObject[]" ExpressionText="productoJson" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="codVerif">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="paisArg">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(paisArg)" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="hizoOperacion">
-                            <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="hizoOperacion" />
-                          </OutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="mensajeTotal">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeTotal" />
-                          </OutArgument>
+                          <InArgument x:TypeArguments="njl:JObject[]" x:Key="productoJson">[productoJson]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="codVerif">[codVerif]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="paisArg">[CInt(paisArg)]</InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="hizoOperacion">[hizoOperacion]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="mensajeTotal">[mensajeTotal]</OutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <If Condition="[hizoOperacion]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="514,235" sap2010:WorkflowViewState.IdRef="If_19">
@@ -718,39 +790,21 @@
                             <ui:InvokeWorkflowFile.Arguments>
                               <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
                               <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg" />
-                              <OutArgument x:TypeArguments="x:String" x:Key="messageArg">
-                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensajeVerifPrecio" />
-                              </OutArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="codVerifArg">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="tipoArg">
-                                <Literal x:TypeArguments="x:Int32" Value="2" />
-                              </InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="messageArg">[mensajeVerifPrecio]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="codVerifArg">[codVerif]</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="tipoArg">2</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </If.Then>
                       </If>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke EnviarCorreo workflow" sap:VirtualizedContainerService.HintSize="514,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="EnviarCorreo.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="passwordArg">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="password" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="correoArg">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="correo" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="mensajeArg">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;La Actualizacion de precios fue terminada. Los errores fueron los siguientes: &quot;+vbCrLf+vbCrLf+mensajeTotal+vbCrLf+mensajeVerifPrecio" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="asuntoArg">
-                            <Literal x:TypeArguments="x:String">Actualización de SKU culminada</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="destinatarioArg">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="destinatario" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="adjunto">
-                            <Literal x:TypeArguments="x:Boolean" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="passwordArg">[password]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="correoArg">[correo]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="mensajeArg">["La Actualizacion de precios fue terminada. Los errores fueron los siguientes: "+vbCrLf+vbCrLf+mensajeTotal+vbCrLf+mensajeVerifPrecio]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="asuntoArg">Actualización de SKU culminada</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="destinatarioArg">[destinatario]</InArgument>
+                          <InArgument x:TypeArguments="x:Boolean" x:Key="adjunto">False</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -820,7 +874,7 @@
                   </ui:LogMessage>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="598,937" sap2010:WorkflowViewState.IdRef="Sequence_49">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -850,13 +904,19 @@
                         </ActivityAction>
                       </ui:ExcelApplicationScope.Body>
                     </ui:ExcelApplicationScope>
-                    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[datosActualizacion]" DisplayName="Para cada fila" sap:VirtualizedContainerService.HintSize="556,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[datosActualizacion]" DisplayName="Para cada fila" sap:VirtualizedContainerService.HintSize="354,1173" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="304,628" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                          <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="304,1025" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="numeroListaCompra" />
+                              <Variable x:TypeArguments="x:String" Name="lineaListaCompra" />
+                              <Variable x:TypeArguments="x:String" Name="numeroListaVenta" />
+                              <Variable x:TypeArguments="x:String" Name="lineaListaVenta" />
+                            </Sequence.Variables>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -878,7 +938,23 @@
                                 <InArgument x:TypeArguments="x:String">[Split(row(1).ToString,"-")(0)]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="262,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_97">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[lineaListaCompra]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[Split(row(2).ToString,"-")(0)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_98">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[numeroListaCompra]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[Split(row(3).ToString,"-")(0)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -891,15 +967,15 @@
                                     <OutArgument x:TypeArguments="x:Double">[precioCompraNuevo]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Double">[CDbl(row(2))]</InArgument>
+                                    <InArgument x:TypeArguments="x:Double">[CDbl(row(4))]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                               </TryCatch.Try>
                               <TryCatch.Catches>
-                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,129" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
@@ -924,10 +1000,26 @@
                                 <OutArgument x:TypeArguments="x:String">[TipoPrecioVentaNuevo]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[Split(row(3).ToString,"-")(0)]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[Split(row(5).ToString,"-")(0)]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="262,52" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_99">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[numeroListaVenta]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[Split(row(6).ToString,"-")(0)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_100">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[lineaListaVenta]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[Split(row(7).ToString,"-")(0)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -940,15 +1032,15 @@
                                     <OutArgument x:TypeArguments="x:Double">[PrecioVentaNueva]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Double">[CDbl(row(4))]</InArgument>
+                                    <InArgument x:TypeArguments="x:Double">[CDbl(row(8))]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                               </TryCatch.Try>
                               <TryCatch.Catches>
-                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,129" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
@@ -968,7 +1060,7 @@
                                 </Catch>
                               </TryCatch.Catches>
                             </TryCatch>
-                            <Flowchart DisplayName="Actualizar Precios" sap:VirtualizedContainerService.HintSize="262,52" sap2010:WorkflowViewState.IdRef="Flowchart_6">
+                            <Flowchart DisplayName="Actualizar Precios" sap:VirtualizedContainerService.HintSize="1005,826" sap2010:WorkflowViewState.IdRef="Flowchart_6">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -986,21 +1078,43 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">20,194</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    <av:Size x:Key="ShapeSize">200,51</av:Size>
                                     <av:PointCollection x:Key="ConnectorLocation">220,220 770,220 770,236.5</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
+                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">compra</InArgument>
-                                    <InArgument x:TypeArguments="x:Double" x:Key="precio">[precioCompraNuevo]</InArgument>
-                                    <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">[CInt(paisArg)]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="sku">[sku]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="moneda">[TipoPrecioCompraNuevo]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">
+                                      <Literal x:TypeArguments="x:String">compra</Literal>
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Double" x:Key="precio">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="precioCompraNuevo" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">
+                                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(paisArg)" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="sku">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sku" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="moneda">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TipoPrecioCompraNuevo" />
+                                    </InArgument>
                                     <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
-                                    <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">[resultado]</OutArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="messageArg">[mensaje]</OutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">[codVerif]</InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">
+                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resultado" />
+                                    </OutArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="messageArg">
+                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensaje" />
+                                    </OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="lineaLista">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lineaListaCompra" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="numeroLista">
+                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="numeroListaCompra" />
+                                    </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1056,21 +1170,43 @@
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <av:Point x:Key="ShapeLocation">0,494</av:Point>
-                                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                    <av:Size x:Key="ShapeSize">200,51</av:Size>
                                                     <av:PointCollection x:Key="ConnectorLocation">100,546 100,576 390,576 390,616.5</av:PointCollection>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
+                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SAP_ActualizacionPrecioSKU workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="SAP_ActualizacionPrecioSKU.xaml">
                                                   <ui:InvokeWorkflowFile.Arguments>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">venta</InArgument>
-                                                    <InArgument x:TypeArguments="x:Double" x:Key="precio">[PrecioVentaNueva]</InArgument>
-                                                    <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">[CInt(paisArg)]</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="sku">[sku]</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="moneda">[TipoPrecioVentaNuevo]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="tipoPrecio">
+                                                      <Literal x:TypeArguments="x:String">venta</Literal>
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:Double" x:Key="precio">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="PrecioVentaNueva" />
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:Int32" x:Key="organizacion">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(paisArg)" />
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="sku">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sku" />
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="moneda">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TipoPrecioVentaNuevo" />
+                                                    </InArgument>
                                                     <OutArgument x:TypeArguments="x:String" x:Key="resultCodeArg" />
-                                                    <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">[resultado]</OutArgument>
-                                                    <OutArgument x:TypeArguments="x:String" x:Key="messageArg">[mensaje]</OutArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">[codVerif]</InArgument>
+                                                    <OutArgument x:TypeArguments="x:String" x:Key="errorCodeArg">
+                                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="resultado" />
+                                                    </OutArgument>
+                                                    <OutArgument x:TypeArguments="x:String" x:Key="messageArg">
+                                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="mensaje" />
+                                                    </OutArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="lineaLista">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lineaListaVenta" />
+                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="numeroLista">
+                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="numeroListaVenta" />
+                                                    </InArgument>
                                                   </ui:InvokeWorkflowFile.Arguments>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1093,11 +1229,11 @@
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <av:Point x:Key="ShapeLocation">670,624</av:Point>
-                                                            <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                            <av:Size x:Key="ShapeSize">200,51</av:Size>
                                                             <av:PointCollection x:Key="ConnectorLocation">770,676 770,730</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RegistroLog workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="RegistroLog.xaml">
+                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RegistroLog workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="RegistroLog.xaml">
                                                           <ui:InvokeWorkflowFile.Arguments>
                                                             <InArgument x:TypeArguments="x:String" x:Key="accion">Error</InArgument>
                                                             <InArgument x:TypeArguments="x:String" x:Key="fechaRegistro" />
@@ -1215,7 +1351,7 @@
             </If.Else>
           </If>
         </Sequence>
-        <Sequence x:Key="3" DisplayName="Actualizar SKU" sap:VirtualizedContainerService.HintSize="953,1915" sap2010:WorkflowViewState.IdRef="Sequence_56">
+        <Sequence x:Key="3" DisplayName="Actualizar SKU" sap:VirtualizedContainerService.HintSize="953,1958" sap2010:WorkflowViewState.IdRef="Sequence_56">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Int32" Name="cont" />
             <Variable x:TypeArguments="x:Boolean" Default="False" Name="hizoActualizacion" />
