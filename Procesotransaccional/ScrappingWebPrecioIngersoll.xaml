@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1442,874</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>931,874</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ScrappingWebPrecioIngersoll_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -110,7 +110,7 @@
           <av:PointCollection x:Key="ConnectorLocation">150,555.5 150,607</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="873,3010" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://icebsprdportal.ingersollrand.com/OA_HTML/ibeCAcdLogin.jsp">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://icebsprdportal.ingersollrand.com/OA_HTML/ibeCAcdLogin.jsp">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -507,7 +507,7 @@
               <av:PointCollection x:Key="ConnectorLocation">250,640 339,640</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Actualizacion Precio" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Actualizacion Precio" sap:VirtualizedContainerService.HintSize="1002,1317" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Double" Name="precioCompraNuevo" />
               <Variable x:TypeArguments="x:String" Name="resultado" />
@@ -591,6 +591,12 @@
                       <InArgument x:TypeArguments="x:String" x:Key="codVeirfArg">
                         <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="codVerif" />
                       </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="lineaLista">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="productoJson(cont).GetValue(&quot;lineaLista&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="numeroLista">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="productoJson(cont).GetValue(&quot;numeroLista&quot;).ToString" />
+                      </InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <If Condition="[resultado.Equals(&quot;0&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="611,400" sap2010:WorkflowViewState.IdRef="If_3">
@@ -667,10 +673,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </Assign>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID1" DisplayName="Decisión de flujo" sap:VirtualizedContainerService.HintSize="94,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-                  <FlowDecision.Condition>
-                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="cont&lt;productoJson.Length" />
-                  </FlowDecision.Condition>
+                <FlowDecision x:Name="__ReferenceID1" Condition="[cont&lt;productoJson.Length]" DisplayName="Decisión de flujo" sap:VirtualizedContainerService.HintSize="94,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>

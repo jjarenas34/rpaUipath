@@ -2015,15 +2015,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Juan Jesus\\.nuget\\packages\\": {}
+    "C:\\Users\\sku\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Procesotransaccional",
       "projectName": "Procesotransaccional",
-      "projectPath": "C:\\Users\\Juan Jesus\\rpaUipath\\Procesotransaccional\\.local",
-      "packagesPath": "C:\\Users\\Juan Jesus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Juan Jesus\\rpaUipath\\Procesotransaccional\\.local"
+      "projectPath": "D:\\Documents\\GitHub\\rpaUipath\\Procesotransaccional\\.local",
+      "packagesPath": "C:\\Users\\sku\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\GitHub\\rpaUipath\\Procesotransaccional\\.local"
     },
     "frameworks": {
       "net461": {

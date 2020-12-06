@@ -19,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>991,951</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>931,951</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidacionRegistro_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -152,7 +152,7 @@
         <InArgument x:TypeArguments="sd:DataRow">[filaArg]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Asignacion de Campos" sap:VirtualizedContainerService.HintSize="304,1652" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <Sequence DisplayName="Asignacion de Campos" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_20">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -199,17 +199,17 @@
           <InArgument x:TypeArguments="x:Int32">8</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_100">
+      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_101">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:Int32">[columnaNumListaCompra]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32">[columnaLineaListaCompra]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:Int32">9</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_101">
+      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_100">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:Int32">[columnaLineaListaCompra]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32">[columnaNumListaCompra]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:Int32">10</InArgument>
@@ -231,28 +231,20 @@
           <InArgument x:TypeArguments="x:Int32">12</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_102">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:Int32">[columnaNumListaVenta]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:Int32">13</InArgument>
-        </Assign.Value>
-      </Assign>
       <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_103">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[columnaLineaListaVenta]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:Int32">14</InArgument>
+          <InArgument x:TypeArguments="x:Int32">13</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_102">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:Int32">[columnaProveedor]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32">[columnaNumListaVenta]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:Int32">13</InArgument>
+          <InArgument x:TypeArguments="x:Int32">14</InArgument>
         </Assign.Value>
       </Assign>
       <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_47">
@@ -261,6 +253,14 @@
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:Int32">15</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[columnaProveedor]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">17</InArgument>
         </Assign.Value>
       </Assign>
       <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_68">
@@ -397,7 +397,7 @@
         </Assign.Value>
       </Assign>
       <AddToCollection x:TypeArguments="x:Object" Collection="[listaAux]" DisplayName="Añadir a listaAux el pais" sap:VirtualizedContainerService.HintSize="1531,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_8" Item="[paisArg]" />
-      <ui:InterruptibleWhile Condition="[contador&lt;totalColumnas]" DisplayName="Mientras" sap:VirtualizedContainerService.HintSize="1531,1177" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_3">
+      <ui:InterruptibleWhile DisplayName="Mientras" sap:VirtualizedContainerService.HintSize="1531,1177" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_3">
         <ui:InterruptibleWhile.Body>
           <Sequence DisplayName="Cuerpo" sap:VirtualizedContainerService.HintSize="1495,1012" sap2010:WorkflowViewState.IdRef="Sequence_34">
             <sap:WorkflowViewStateService.ViewState>
@@ -504,6 +504,9 @@
             </Assign>
           </Sequence>
         </ui:InterruptibleWhile.Body>
+        <ui:InterruptibleWhile.Condition>
+          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="contador&lt;totalColumnas" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+        </ui:InterruptibleWhile.Condition>
       </ui:InterruptibleWhile>
       <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="1531,60" sap2010:WorkflowViewState.IdRef="Assign_98">
         <Assign.To>
@@ -514,7 +517,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <If Condition="[camposCorrectos]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_11">
+    <If Condition="[camposCorrectos]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="947,1304" sap2010:WorkflowViewState.IdRef="If_11">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -528,7 +531,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Creación JSON para registro" sap:VirtualizedContainerService.HintSize="376,754" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence DisplayName="Creación JSON para registro" sap:VirtualizedContainerService.HintSize="556,66" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -549,6 +552,10 @@
             <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda2" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_2" />
             <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda3" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_3" />
             <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda4" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_4" />
+            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda5" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_5" />
+            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda6" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_6" />
+            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda7" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_7" />
+            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="act_moneda8" DataTable="[datosRegJson]" DisplayName="Quitar columna de datos" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_8" />
             <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_51">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[MensajeSalidaArg]</OutArgument>
@@ -695,7 +702,7 @@
                 </Sequence>
               </ui:InterruptibleWhile.Body>
               <ui:InterruptibleWhile.Condition>
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;totalColumnasObliga" />
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="i&lt;totalColumnasObliga" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
               </ui:InterruptibleWhile.Condition>
             </ui:InterruptibleWhile>
           </Sequence>
@@ -711,9 +718,9 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="438,300" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="438,293" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="611,635" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -762,7 +769,7 @@
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -786,7 +793,7 @@
               </TryCatch.Catches>
             </TryCatch>
           </Sequence>
-          <Flowchart DisplayName="Validar Precio con Proveedor" sap:VirtualizedContainerService.HintSize="556,51" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart DisplayName="Validar Precio con Proveedor" sap:VirtualizedContainerService.HintSize="765,751" sap2010:WorkflowViewState.IdRef="Flowchart_1">
             <Flowchart.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="nombreProvValido" />
             </Flowchart.Variables>
@@ -871,14 +878,14 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <FlowDecision.True>
-                        <FlowStep x:Name="__ReferenceID7">
+                        <FlowStep x:Name="__ReferenceID6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">10,357</av:Point>
                               <av:Size x:Key="ShapeSize">200,66</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="763,1077" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="precioProv" />
                               <Variable x:TypeArguments="x:Int32" Name="estado" />
@@ -1002,7 +1009,7 @@
                               <OutArgument x:TypeArguments="x:Boolean">[nombreProvValido]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:Boolean">[fila(columnaProveedor).ToString.Equals("Sin determinar")]</InArgument>
+                              <InArgument x:TypeArguments="x:Boolean">[fila(columnaProveedor).ToString.Equals("HYSTER")]</InArgument>
                             </Assign.Value>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1017,29 +1024,129 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <av:Point x:Key="ShapeLocation">473,526.5</av:Point>
                                   <av:Size x:Key="ShapeSize">94,87</av:Size>
-                                  <av:PointCollection x:Key="TrueConnector">473,570 443,570 443,569.52 360,569.52</av:PointCollection>
+                                  <av:PointCollection x:Key="TrueConnector">473,570 443,570 443,560 340,560</av:PointCollection>
                                   <av:PointCollection x:Key="FalseConnector">567,570 620,570 620,647</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <FlowDecision.True>
-                                <FlowStep x:Name="__ReferenceID5">
+                                <FlowStep x:Name="__ReferenceID7">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">160,544.02</av:Point>
-                                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                      <av:Point x:Key="ShapeLocation">140,527</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,66</av:Size>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Bandeja de mensajes" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Aqui va el scrapping del prov2&quot;]">
+                                  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="763,1077" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="precioProv" />
+                                      <Variable x:TypeArguments="x:Int32" Name="estado" />
+                                    </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                  </ui:MessageBox>
+                                    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="721,60" sap2010:WorkflowViewState.IdRef="Assign_108">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[validarPrecioProveedor]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ScrappingPrecioHyster workflow" sap:VirtualizedContainerService.HintSize="721,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Reg_ScrappingPrecioHyster.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="productoARG">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fila(columnaCodProducto).ToString" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="precioARG">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="precioProv" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:Int32" x:Key="outARG" />
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="721,758" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                                      <TryCatch.Try>
+                                        <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="683,531" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:Double" Name="precioCompraProv" />
+                                            <Variable x:TypeArguments="x:Double" Name="precioCompra" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="641,60" sap2010:WorkflowViewState.IdRef="Assign_109">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Double">[precioCompraProv]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(precioProv)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="641,60" sap2010:WorkflowViewState.IdRef="Assign_110">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Double">[precioCompra]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(fila(columnaPrecioCompra).ToString)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <If Condition="[precioCompra=precioCompraProv]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="641,239" sap2010:WorkflowViewState.IdRef="If_17">
+                                            <If.Then>
+                                              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_111">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Boolean">[validarPrecioProveedor]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Then>
+                                            <If.Else>
+                                              <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;El precio de compra no es igual al proveedor&quot;]" />
+                                            </If.Else>
+                                          </If>
+                                        </Sequence>
+                                      </TryCatch.Try>
+                                      <TryCatch.Catches>
+                                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="687,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ActivityAction x:TypeArguments="s:Exception">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                            </ActivityAction.Argument>
+                                            <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;No se puede convertir el numero en texto&quot;]" />
+                                              <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_112">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Boolean">[validarPrecioProveedor]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </Catch>
+                                      </TryCatch.Catches>
+                                    </TryCatch>
+                                  </Sequence>
                                 </FlowStep>
                               </FlowDecision.True>
                               <FlowDecision.False>
-                                <FlowStep x:Name="__ReferenceID6">
+                                <FlowStep x:Name="__ReferenceID5">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <av:Point x:Key="ShapeLocation">520,647</av:Point>
@@ -1110,7 +1217,7 @@
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
                 <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;La repuesta de reglas fue: &quot; +respuestaReglas]" />
-                <If Condition="[respuestaReglas.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="653,400" sap2010:WorkflowViewState.IdRef="If_8">
+                <If Condition="[respuestaReglas.Equals(&quot;True&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
